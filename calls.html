@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElderCare - Voice & Video Calls</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .call-button {
+      transition: all 0.3s ease;
+    }
+    .call-button:hover {
+      transform: scale(1.05);
+    }
+    #videoContainer {
+      background-color: #1a202c;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <section class="mb-8">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-3xl font-bold text-purple-600 mb-6">Voice & Video Calls</h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Call Interface -->
+          <div>
+            <div id="videoContainer" class="rounded-lg overflow-hidden mb-4 relative" style="height: 300px;">
+              <!-- Local video will appear here -->
+              <video id="localVideo" autoplay muted class="absolute bottom-2 right-2 w-32 h-24 object-cover rounded-lg border-2 border-white shadow-md"></video>
+            </div>
+            
+            <div class="flex justify-center space-x-4 mb-6">
+              <button id="startVideoCall" class="call-button bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full flex items-center">
+                <i class="fas fa-video mr-2"></i> Video Call
+              </button>
+              <button id="startVoiceCall" class="call-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full flex items-center">
+                <i class="fas fa-phone-alt mr-2"></i> Voice Call
+              </button>
+            </div>
+            
+            <div class="flex justify-center space-x-4 hidden" id="callControls">
+              <button id="muteBtn" class="call-button bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full">
+                <i class="fas fa-microphone"></i>
+              </button>
+              <button id="videoToggleBtn" class="call-button bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full">
+                <i class="fas fa-video"></i>
+              </button>
+              <button id="endCallBtn" class="call-button bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                <i class="fas fa-phone-slash"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Contacts Section -->
+          <div>
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+              <i class="fas fa-address-book text-purple-500 mr-2"></i>
+              Frequent Contacts
+            </h2>
+            
+            <div class="space-y-3">
+              <!-- Contact 1 -->
+              <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer">
+                <div class="relative mr-3">
+                  <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="Contact" class="w-12 h-12 rounded-full object-cover">
+                  <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-semibold">Dr. Sarah Miller</h3>
+                  <p class="text-sm text-gray-600">Primary Care Physician</p>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="text-blue-500 hover:text-blue-700">
+                    <i class="fas fa-phone-alt"></i>
+                  </button>
+                  <button class="text-purple-500 hover:text-purple-700">
+                    <i class="fas fa-video"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Contact 2 -->
+              <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer">
+                <div class="relative mr-3">
+                  <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg" alt="Contact" class="w-12 h-12 rounded-full object-cover">
+                  <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-semibold">David Wilson</h3>
+                  <p class="text-sm text-gray-600">Son</p>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="text-blue-500 hover:text-blue-700">
+                    <i class="fas fa-phone-alt"></i>
+                  </button>
+                  <button class="text-purple-500 hover:text-purple-700">
+                    <i class="fas fa-video"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Contact 3 -->
+              <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 cursor-pointer">
+                <div class="relative mr-3">
+                  <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg" alt="Contact" class="w-12 h-12 rounded-full object-cover">
+                  <div class="absolute bottom-0 right-0 w-3 h-3 bg-gray-500 rounded-full border-2 border-white"></div>
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-semibold">Lisa Thompson</h3>
+                  <p class="text-sm text-gray-600">Caregiver</p>
+                </div>
+                <div class="flex space-x-2">
+                  <button class="text-blue-500 hover:text-blue-700">
+                    <i class="fas fa-phone-alt"></i>
+                  </button>
+                  <button class="text-purple-500 hover:text-purple-700">
+                    <i class="fas fa-video"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-6">
+              <h3 class="font-semibold mb-2">Add New Contact</h3>
+              <form id="addContactForm" class="flex">
+                <input type="text" placeholder="Name or phone number" class="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-r-md">
+                  Add
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Call Modal -->
+  <div id="callModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4 text-center">
+      <div class="mb-6">
+        <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg" alt="Caller" class="w-24 h-24 rounded-full mx-auto object-cover mb-4">
+        <h3 class="text-xl font-bold">David Wilson</h3>
+        <p class="text-gray-600">Incoming call</p>
+      </div>
+      <div class="flex justify-center space-x-6">
+        <button id="declineCallBtn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full">
+          <i class="fas fa-phone-slash"></i>
+        </button>
+        <button id="acceptCallBtn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full">
+          <i class="fas fa-phone-alt"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Load header and footer
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+
+    // Call functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const startVideoBtn = document.getElementById('startVideoCall');
+      const startVoiceBtn = document.getElementById('startVoiceCall');
+      const callControls = document.getElementById('callControls');
+      const callModal = document.getElementById('callModal');
+      const acceptCallBtn = document.getElementById('acceptCallBtn');
+      const declineCallBtn = document.getElementById('declineCallBtn');
+      const muteBtn = document.getElementById('muteBtn');
+      const videoToggleBtn = document.getElementById('videoToggleBtn');
+      const endCallBtn = document.getElementById('endCallBtn');
+      const localVideo = document.getElementById('localVideo');
+      
+      // Simulate starting a call
+      startVideoBtn.addEventListener('click', function() {
+        callControls.classList.remove('hidden');
+        // In a real app, this would initialize WebRTC
+        alert('Starting video call with selected contact...');
+        
+        // Simulate local video stream
+        navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia || 
+          navigator.mediaDevices.webkitGetUserMedia || 
+          navigator.mediaDevices.mozGetUserMedia;
+        
+        if (navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(function(stream) {
+              localVideo.srcObject = stream;
+            })
+            .catch(function(err) {
+              console.log("Could not get media: " + err);
+            });
+        }
+      });
+      
+      startVoiceBtn.addEventListener('click', function() {
+        callControls.classList.remove('hidden');
+        // In a real app, this would initialize WebRTC for audio only
+        alert('Starting voice call with selected contact...');
+      });
+      
+      // Simulate incoming call
+      setTimeout(() => {
+        callModal.classList.remove('hidden');
+      }, 5000);
+      
+      acceptCallBtn.addEventListener('click', function() {
+        callModal.classList.add('hidden');
+        callControls.classList.remove('hidden');
+        alert('Call connected!');
+      });
+      
+      declineCallBtn.addEventListener('click', function() {
+        callModal.classList.add('hidden');
+        alert('Call declined.');
+      });
+      
+      endCallBtn.addEventListener('click', function() {
+        callControls.classList.add('hidden');
+        alert('Call ended.');
+        if (localVideo.srcObject) {
+          localVideo.srcObject.getTracks().forEach(track => track.stop());
+          localVideo.srcObject = null;
+        }
+      });
+      
+      // Toggle mute
+      let isMuted = false;
+      muteBtn.addEventListener('click', function() {
+        isMuted = !isMuted;
+        muteBtn.innerHTML = isMuted ? '<i class="fas fa-microphone-slash"></i>' : '<i class="fas fa-microphone"></i>';
+        muteBtn.classList.toggle('bg-gray-200');
+        muteBtn.classList.toggle('bg-red-200');
+      });
+      
+      // Toggle video
+      let isVideoOn = true;
+      videoToggleBtn.addEventListener('click', function() {
+        isVideoOn = !isVideoOn;
+        videoToggleBtn.innerHTML = isVideoOn ? '<i class="fas fa-video"></i>' : '<i class="fas fa-video-slash"></i>';
+        videoToggleBtn.classList.toggle('bg-gray-200');
+        videoToggleBtn.classList.toggle('bg-red-200');
+        if (localVideo.srcObject) {
+          localVideo.srcObject.getVideoTracks()[0].enabled = isVideoOn;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
