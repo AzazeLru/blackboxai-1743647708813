@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElderCare - Task Assistance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .task-card {
+      transition: all 0.3s ease;
+    }
+    .task-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .priority-high {
+      border-left-color: #ef4444;
+    }
+    .priority-medium {
+      border-left-color: #f59e0b;
+    }
+    .priority-low {
+      border-left-color: #10b981;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <section class="mb-8">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-3xl font-bold text-indigo-600 mb-6">Task Assistance</h1>
+        
+        <!-- Request Help Form -->
+        <div class="mb-8 bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-r-lg">
+          <h2 class="text-xl font-semibold mb-4 flex items-center">
+            <i class="fas fa-hands-helping text-indigo-500 mr-2"></i>
+            Request Help
+          </h2>
+          
+          <form id="taskRequestForm" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-gray-700 mb-2" for="taskType">Task Type</label>
+                <select id="taskType" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                  <option value="">Select a task type</option>
+                  <option value="groceries">Grocery Shopping</option>
+                  <option value="pharmacy">Pharmacy Pickup</option>
+                  <option value="transportation">Transportation</option>
+                  <option value="housekeeping">Housekeeping</option>
+                  <option value="meal_prep">Meal Preparation</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div>
+                <label class="block text-gray-700 mb-2" for="taskPriority">Priority</label>
+                <select id="taskPriority" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                </select>
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 mb-2" for="taskDetails">Details</label>
+              <textarea id="taskDetails" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Please provide details about what you need..." required></textarea>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 mb-2" for="taskDate">When do you need this done?</label>
+              <input type="datetime-local" id="taskDate" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+            </div>
+            
+            <div class="flex justify-end">
+              <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded">
+                Request Help
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Current Tasks -->
+        <div class="mb-8">
+          <h2 class="text-xl font-semibold mb-4 flex items-center">
+            <i class="fas fa-tasks text-gray-500 mr-2"></i>
+            Your Current Tasks
+          </h2>
+          
+          <div class="space-y-4">
+            <!-- Task 1 -->
+            <div class="task-card bg-white border-l-4 priority-medium border rounded-lg p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-semibold text-lg">Grocery Shopping</h3>
+                  <p class="text-gray-600 mb-2">Need milk, bread, eggs, and bananas</p>
+                  <div class="flex items-center text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>Due: Tomorrow at 2:00 PM</span>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Medium Priority</span>
+                  <button class="text-green-600 hover:text-green-800">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="text-red-600 hover:text-red-800">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="mt-2 flex items-center text-sm text-gray-500">
+                <i class="fas fa-user mr-1"></i>
+                <span>Assigned to: Volunteer (Lisa Thompson)</span>
+              </div>
+            </div>
+            
+            <!-- Task 2 -->
+            <div class="task-card bg-white border-l-4 priority-high border rounded-lg p-4">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-semibold text-lg">Pharmacy Pickup</h3>
+                  <p class="text-gray-600 mb-2">Prescription #45678 at City Pharmacy</p>
+                  <div class="flex items-center text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>Due: Today by 5:00 PM</span>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">High Priority</span>
+                  <button class="text-green-600 hover:text-green-800">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="text-red-600 hover:text-red-800">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="mt-2 flex items-center text-sm text-gray-500">
+                <i class="fas fa-user mr-1"></i>
+                <span>Assigned to: Family (David Wilson)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Completed Tasks -->
+        <div>
+          <h2 class="text-xl font-semibold mb-4 flex items-center">
+            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+            Completed Tasks
+          </h2>
+          
+          <div class="space-y-4">
+            <!-- Completed Task 1 -->
+            <div class="task-card bg-gray-50 border-l-4 border-gray-300 rounded-lg p-4 opacity-75">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-semibold text-lg">Doctor's Appointment</h3>
+                  <p class="text-gray-600 mb-2">Transportation to City Medical Center</p>
+                  <div class="flex items-center text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>Completed: Yesterday at 3:30 PM</span>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Completed</span>
+                </div>
+              </div>
+              <div class="mt-2 flex items-center text-sm text-gray-500">
+                <i class="fas fa-user mr-1"></i>
+                <span>Completed by: Volunteer (John Smith)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Task Confirmation Modal -->
+  <div id="taskModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4 text-center">
+      <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i class="fas fa-check text-green-500 text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold mb-2">Task Request Sent!</h3>
+      <p class="text-gray-600 mb-6">Your request for assistance has been submitted. A volunteer or caregiver will contact you soon.</p>
+      <button id="closeTaskModal" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded">
+        OK
+      </button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Load header and footer
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+
+    // Task functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const taskForm = document.getElementById('taskRequestForm');
+      const taskModal = document.getElementById('taskModal');
+      const closeTaskModal = document.getElementById('closeTaskModal');
+
+      // Handle task form submission
+      taskForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const taskType = document.getElementById('taskType').value;
+        const priority = document.getElementById('taskPriority').value;
+        const details = document.getElementById('taskDetails').value;
+        const dueDate = document.getElementById('taskDate').value;
+        
+        // In a real app, this would send data to a backend
+        console.log('Task submitted:', { taskType, priority, details, dueDate });
+        
+        // Show confirmation modal
+        taskModal.classList.remove('hidden');
+        
+        // Reset form
+        taskForm.reset();
+      });
+
+      // Close modal
+      closeTaskModal.addEventListener('click', function() {
+        taskModal.classList.add('hidden');
+      });
+
+      // Mark task as complete
+      document.querySelectorAll('.task-card button.text-green-600').forEach(button => {
+        button.addEventListener('click', function() {
+          const taskCard = this.closest('.task-card');
+          if (confirm('Mark this task as completed?')) {
+            taskCard.classList.add('bg-gray-50', 'opacity-75');
+            taskCard.querySelector('span.bg-red-100, span.bg-yellow-100, span.bg-green-100').className = 'bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full';
+            taskCard.querySelector('span.bg-red-100, span.bg-yellow-100, span.bg-green-100').textContent = 'Completed';
+          }
+        });
+      });
+
+      // Cancel task
+      document.querySelectorAll('.task-card button.text-red-600').forEach(button => {
+        button.addEventListener('click', function() {
+          if (confirm('Cancel this task request?')) {
+            this.closest('.task-card').remove();
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
