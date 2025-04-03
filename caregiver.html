@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElderCare - Caregiver Matching</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .caregiver-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8">
+    <section class="mb-8">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-3xl font-bold text-green-600 mb-6">Find Caregivers & Volunteers</h1>
+        
+        <!-- Search and Filter Section -->
+        <div class="mb-8 bg-gray-50 p-4 rounded-lg">
+          <h2 class="text-xl font-semibold mb-4">What kind of assistance do you need?</h2>
+          
+          <form id="caregiverSearchForm" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-gray-700 mb-2" for="serviceType">Service Type</label>
+              <select id="serviceType" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                <option value="">Any Service</option>
+                <option value="personal_care">Personal Care</option>
+                <option value="companionship">Companionship</option>
+                <option value="meal_prep">Meal Preparation</option>
+                <option value="transportation">Transportation</option>
+                <option value="housekeeping">Housekeeping</option>
+                <option value="medical">Medical Assistance</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 mb-2" for="availability">Availability</label>
+              <select id="availability" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                <option value="">Any Time</option>
+                <option value="weekdays">Weekdays</option>
+                <option value="weekends">Weekends</option>
+                <option value="mornings">Mornings</option>
+                <option value="afternoons">Afternoons</option>
+                <option value="evenings">Evenings</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-gray-700 mb-2" for="location">Location</label>
+              <input type="text" id="location" placeholder="Zip code or city" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            
+            <div class="md:col-span-3">
+              <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded">
+                Search Caregivers
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Caregiver Listings -->
+        <div>
+          <h2 class="text-xl font-semibold mb-4">Available Caregivers Near You</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Caregiver Card 1 -->
+            <div class="caregiver-card bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300">
+              <div class="relative">
+                <img src="https://images.pexels.com/photos/3761509/pexels-photo-3761509.jpeg" alt="Caregiver" class="w-full h-48 object-cover">
+                <div class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  Verified
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="text-lg font-bold">Sarah Johnson</h3>
+                  <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                </div>
+                <p class="text-gray-600 mb-3">Certified Nursing Assistant with 5+ years experience</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Personal Care</span>
+                  <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Meal Prep</span>
+                  <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Companionship</span>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> 3 miles away</p>
+                  </div>
+                  <button class="bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded">
+                    Contact
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Caregiver Card 2 -->
+            <div class="caregiver-card bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300">
+              <div class="relative">
+                <img src="https://images.pexels.com/photos/532220/pexels-photo-532220.jpeg" alt="Caregiver" class="w-full h-48 object-cover">
+              </div>
+              <div class="p-4">
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="text-lg font-bold">Michael Chen</h3>
+                  <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <p class="text-gray-600 mb-3">Physical Therapist specializing in elder mobility</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Medical</span>
+                  <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Transportation</span>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> 5 miles away</p>
+                  </div>
+                  <button class="bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded">
+                    Contact
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Caregiver Card 3 -->
+            <div class="caregiver-card bg-white border border-gray-200 rounded-lg overflow-hidden transition-all duration-300">
+              <div class="relative">
+                <img src="https://images.pexels.com/photos/5905902/pexels-photo-5905902.jpeg" alt="Caregiver" class="w-full h-48 object-cover">
+                <div class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  Verified
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="text-lg font-bold">Maria Garcia</h3>
+                  <div class="flex text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+                <p class="text-gray-600 mb-3">Compassionate companion with 10+ years experience</p>
+                
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Companionship</span>
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Housekeeping</span>
+                  <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Errands</span>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                  <div>
+                    <p class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i> 2 miles away</p>
+                  </div>
+                  <button class="bg-green-600 hover:bg-green-700 text-white text-sm font-bold py-2 px-4 rounded">
+                    Contact
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+      <h3 class="text-xl font-bold text-green-600 mb-4">Contact Caregiver</h3>
+      <form id="contactForm">
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2" for="contactName">Your Name</label>
+          <input type="text" id="contactName" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2" for="contactPhone">Phone Number</label>
+          <input type="tel" id="contactPhone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2" for="contactMessage">Message</label>
+          <textarea id="contactMessage" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" required></textarea>
+        </div>
+        <div class="flex justify-between">
+          <button type="button" id="cancelContactBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
+            Cancel
+          </button>
+          <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Load header and footer
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+
+    // Caregiver matching functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactButtons = document.querySelectorAll('.caregiver-card button');
+      const contactModal = document.getElementById('contactModal');
+      const cancelContactBtn = document.getElementById('cancelContactBtn');
+      const contactForm = document.getElementById('contactForm');
+      
+      // Show contact modal when clicking any contact button
+      contactButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          contactModal.classList.remove('hidden');
+        });
+      });
+      
+      // Hide contact modal
+      cancelContactBtn.addEventListener('click', function() {
+        contactModal.classList.add('hidden');
+      });
+      
+      // Handle contact form submission
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Your message has been sent to the caregiver!');
+        contactModal.classList.add('hidden');
+        contactForm.reset();
+      });
+    });
+  </script>
+</body>
+</html>
